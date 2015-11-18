@@ -21,9 +21,10 @@ dependencies.
 
 * **So this is all memory-safe and stuff because rust, right?**
 
-  Lol no. Take note of all the `unsafe` blocks, and then realize they were
-  written by me. I just recently fixed a bug in which I accidentally dereferenced
-  an integer. Not sure if any of rust's benefits have survived.
+  Lol no. Take note of all the `unsafe` blocks, both here and in `pebble.rs`,
+  and then realize they were written by me. I just recently fixed a bug in
+  which I accidentally dereferenced an integer. Not sure if any of rust's
+  benefits have survived.
 
 * **Why on earth do I do [this](https://github.com/andars/bits-of-rust/blob/399577414a797fbc79277fd02e3c6bc3479320cb/wscript#L48)
   and [this](https://github.com/andars/bits-of-rust/blob/master/build.sh#L14) instead of some legitimate build process?**
