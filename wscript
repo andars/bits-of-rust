@@ -1,4 +1,3 @@
-
 #
 # This file is the default set of rules to compile a Pebble project.
 #
@@ -17,7 +16,7 @@ out = 'build'
 TaskGen.declare_chain(
     name='rustc',
     rule="${RUSTC} -Z no-landing-pads --target arm-none-eabi "  
-         "-L ../target/arm-none-eabi/release/deps "
+         "-L ../target/arm-none-eabi/release/deps -C opt-level=3 "
          "${SRC} --emit obj -A dead-code -o ${TGT}",
     ext_in='.rs',
     ext_out='.o',)
