@@ -4,7 +4,6 @@
 #![feature(lang_items)]
 #![feature(link_args)]
 #![feature(alloc)]
-
 #![no_std]
 
 extern crate pebble;
@@ -44,7 +43,6 @@ const SECONDS_FIRST_DIGIT_MAX_COLS: u16 = 3;
 static mut display_layer: *mut types::Layer = 0 as *mut types::Layer;
 
 fn draw_cell(ctx: *mut types::GContext, center: GPoint, bit: u16) {
-    raw::app_log("drawing cell\0"); 
     raw::graphics_context_set_fill_color(ctx, types::GColor::GColorWhite);
     raw::graphics_fill_circle(ctx, center, CIRCLE_RADIUS);
 
@@ -62,15 +60,12 @@ fn get_center_point_from_cell_location(x: u16, y: u16) -> GPoint {
 }
 
 fn draw_cell_row_for_digit(ctx: *mut types::GContext, digit: u16, columns: u16, row: u16) {
-    raw::app_log("drawing row\0");
     for i in 0..columns {
-        raw::app_log("drawing loop\0");
         draw_cell(ctx, get_center_point_from_cell_location(i, row), (digit >> i) & 0x1);
     }
 }
 
 fn get_display_hour(hour: u32) -> u16 {
-    raw::app_log("get hour\0");
     if raw::clock_is_24h_style() {
         return hour as u16;
     } 
@@ -79,11 +74,8 @@ fn get_display_hour(hour: u32) -> u16 {
 }
 
 extern fn display_layer_update(layer: *mut types::Layer, ctx: *mut types::GContext) {
-    raw::app_log("update\0");
     let now = raw::time();
-    raw::app_log("update\0");
     let t = raw::localtime(now);
-    raw::app_log("update\0");
 
     let mut min = 0;
     let mut sec = 0;
@@ -93,25 +85,19 @@ extern fn display_layer_update(layer: *mut types::Layer, ctx: *mut types::GConte
         min = (*t).tm_min as u16;
         sec = (*t).tm_sec as u16;
     }
-    raw::app_log("drawing cells\0");
     draw_cell_row_for_digit(ctx, hr / 10 , HOURS_FIRST_DIGIT_MAX_COLS, HOURS_FIRST_DIGIT_ROW);
     draw_cell_row_for_digit(ctx, hr % 10 , DEFAULT_MAX_COLS, HOURS_SECOND_DIGIT_ROW);
 
-    raw::app_log("drawing cells\0");
     draw_cell_row_for_digit(ctx, min / 10, MINUTES_FIRST_DIGIT_MAX_COLS, MINUTES_FIRST_DIGIT_ROW);
     draw_cell_row_for_digit(ctx, min % 10, DEFAULT_MAX_COLS, MINUTES_SECOND_DIGIT_ROW);
 
-    raw::app_log("drawing cells\0");
     draw_cell_row_for_digit(ctx, sec / 10, SECONDS_FIRST_DIGIT_MAX_COLS, SECONDS_FIRST_DIGIT_ROW);
     draw_cell_row_for_digit(ctx, sec % 10, DEFAULT_MAX_COLS, SECONDS_SECOND_DIGIT_ROW);
-    raw::app_log("exiting update\0");
 }
 
 extern fn handle_second_tick(tick_time: *mut types::TM, units: types::TimeUnits) {
-    raw::app_log("yo second\0");
     unsafe { 
         if display_layer != 0 as *mut types::Layer {
-            raw::app_log("something here\0");
             raw::layer_mark_dirty(display_layer);
         } else {
             raw::app_log("nothing here\0");
