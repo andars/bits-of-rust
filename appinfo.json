@@ -1,0 +1,19 @@
+{
+  "uuid": "8746a5fa-7da3-460d-a042-aaf7543faf52",
+  "shortName": "rust bits",
+  "longName": "rust just a bit",
+  "companyName": "andrew foote",
+  "versionCode": 1,
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["aplite", "basalt"],
+  "watchapp": {
+    "watchface": true
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  }
+}

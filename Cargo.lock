@@ -1,0 +1,35 @@
+[root]
+name = "pebble-rust"
+version = "0.0.1"
+dependencies = [
+ "pebble 0.0.1",
+]
+
+[[package]]
+name = "alloc"
+version = "0.0.1"
+dependencies = [
+ "alloc_system 0.0.1",
+ "core 0.0.1",
+]
+
+[[package]]
+name = "alloc_system"
+version = "0.0.1"
+dependencies = [
+ "core 0.0.1",
+]
+
+[[package]]
+name = "core"
+version = "0.0.1"
+
+[[package]]
+name = "pebble"
+version = "0.0.1"
+dependencies = [
+ "alloc 0.0.1",
+ "alloc_system 0.0.1",
+ "core 0.0.1",
+]
+
