@@ -17,7 +17,7 @@ dependencies.
 ##Size comparison
 
 In my builds, the C implementation of this watchface clocks in at 920 bytes, and
-this version is (currently) at 1674 bytes. There is probably some tricks I could 
+this version is (currently) at 1674 bytes. There are probably some tricks I could 
 find to decrease that, because I haven't tried at all yet.
 
 #reminder
