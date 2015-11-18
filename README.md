@@ -14,5 +14,11 @@ dependencies.
 
 **See the note about patching the pebble sdk on the pebble.rs readme.**
 
+##Size comparison
+
+In my builds, the C implementation of this watchface clocks in at 920 bytes, and
+this version is (currently) at 1674 bytes. There is probably some tricks I could 
+find to decrease that, because I haven't tried at all yet.
+
 #reminder
 ![electrical](http://binscorner.com/mails/f/fwd-no-problem-there-i-fixed-it/part-008.jpeg)
