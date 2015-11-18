@@ -124,7 +124,7 @@ extern fn window_unload_handler(window: *mut Window) {
 extern fn window_appear_handler(window: *mut Window) {
 }
 extern fn window_disappear_handler(window: *mut Window) {
-    //unsafe { raw::layer_destroy(display_layer.unwrap()) }
+    unsafe { raw::layer_destroy(display_layer) }
 }
 
 fn init() -> *mut Window {
