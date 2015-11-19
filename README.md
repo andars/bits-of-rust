@@ -43,7 +43,7 @@ dependencies.
 ##Size comparison
 
 In my builds, the C implementation of this watchface clocks in at 920 bytes, and
-this version is (currently) at ~1674~ 2206 bytes [edit: this is super finicky. [this](https://github.com/andars/bits-of-rust/commit/8ff5a692f61ee18f9deff1c7102890e184ff1993) commit *increased* the binary size by 600 bytes. no clue why]. There are probably some tricks I could 
+this version is (currently) at ~~1674~~ 1328 bytes. There are probably some tricks I could 
 find to decrease that, because I haven't tried anything past rustc's `opt-level` yet.
 
 #reminder

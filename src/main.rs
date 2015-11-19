@@ -42,6 +42,7 @@ const SECONDS_FIRST_DIGIT_MAX_COLS: u16 = 3;
 
 static mut display_layer: *mut types::Layer = 0 as *mut types::Layer;
 
+#[inline(never)]
 fn draw_cell(ctx: *mut types::GContext, center: GPoint, bit: u16) {
     raw::graphics_context_set_fill_color(ctx, types::GColor::GColorWhite);
     raw::graphics_fill_circle(ctx, center, CIRCLE_RADIUS);
@@ -59,6 +60,7 @@ fn get_center_point_from_cell_location(x: u16, y: u16) -> GPoint {
     }
 }
 
+#[inline(never)]
 fn draw_cell_row_for_digit(ctx: *mut types::GContext, digit: u16, columns: u16, row: u16) {
     for i in 0..columns {
         draw_cell(ctx, get_center_point_from_cell_location(i, row), (digit >> i) & 0x1);
