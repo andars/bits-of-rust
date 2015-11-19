@@ -77,9 +77,9 @@ extern fn display_layer_update(layer: *mut types::Layer, ctx: *mut types::GConte
     let now = raw::time();
     let t = raw::localtime(now);
 
-    let mut min = 0;
-    let mut sec = 0;
-    let mut hr = 0;
+    let min;
+    let sec;
+    let hr;
     unsafe {
         hr = get_display_hour((*t).tm_hour);
         min = (*t).tm_min as u16;
@@ -99,9 +99,7 @@ extern fn handle_second_tick(tick_time: *mut types::TM, units: types::TimeUnits)
     unsafe { 
         if display_layer != 0 as *mut types::Layer {
             raw::layer_mark_dirty(display_layer);
-        } else {
-            raw::app_log("nothing here\0");
-        }
+        } 
     }
 }
 
